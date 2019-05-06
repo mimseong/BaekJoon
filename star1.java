@@ -8,8 +8,17 @@ public class Main {
 		for(i = 1; i <= n; i++)
 		{
 			for(j = 0; j < i; j++)
-			{System.out.println(*);}
+			{System.out.print('*');}
+			System.out.print('\n');
 		}
 		sc.close();
 	}
 }
+/*
+input 5:
+*
+**
+***
+****
+*****
+*/
