@@ -8,25 +8,29 @@ public class Main {
 		int day = sc.nextInt();
 		int sum = 0;
 
-		for(int i = 2; i <= month; i++)
-		{	switch(i)
-			{
-				case 2: case 4: case 6: case 8: case 9: case 11:
-					sum += 31;
-					break;
-				case 5: case 7: case 10: case 12:
-					sum += 30;
-					break;
-				case 3:
-					sum += 28;
-					break;
+		if(month != 1){
+			for(int i = 1; i <= month - 1; i++)
+			{	switch(i)
+				{
+					case 1: case 3: case 5: case 7: case 8: case 10:
+						sum += 31;
+						break;
+					case 4: case 6: case 9: case 11:
+						sum += 30;
+						break;
+					case 2:
+						sum += 28;
+						break;
+					default :
+						break;
+				}
 			}
 		}
 		sum = (sum + day) % 7;
 
 		switch(sum){
 			case 1:
-				System.out.print("Mon");
+				System.out.print("MON");
 				break;
 			case 2:
 				System.out.print("TUE");
@@ -46,6 +50,8 @@ public class Main {
 			case 0:
 				System.out.print("SUN");
 				break;	
+			default :
+				break;
 		}
 	}
 }
