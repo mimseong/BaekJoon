@@ -22,7 +22,8 @@ public class Main {
 			bw.close();
 		} catch (IOException e) {
     		e.printStackTrace();
-		} 	}
+		} 	
+	}
 }
 /*
 input 
