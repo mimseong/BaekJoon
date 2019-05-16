@@ -38,3 +38,16 @@ public class Main {
 		return GCD(n2, n1 % n2);
 	}
 }
+/*
+<input>
+	3
+	1 45000
+	6 10
+	13 17
+
+<output>
+	45000
+	30
+	221
+
+*/
