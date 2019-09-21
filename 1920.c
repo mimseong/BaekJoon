@@ -1,11 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 void read_data(int** input_list, int** find_list, int* input_size, int* find_size);
-void selection_sort(int * list, int size);
 int binary_search(int left, int right, int findN, int *list);
 void swap(int *a, int *b);
 int* Malloc(int size);
+void quick_sort(int list[], int low, int high);
+int partition(int list[], int low, int high);
+int rand_partition(int list[], int low, int high);
 
 int main()
 {
@@ -16,7 +19,7 @@ int main()
     
     read_data(&input_list, &find_list, &input_size, &find_size);
     
-    selection_sort(input_list, input_size);
+    quick_sort(input_list, 0, input_size - 1);
     
     for(i = 0; i < find_size; i++){
         result = binary_search(0, input_size - 1, find_list[i], input_list);
@@ -68,23 +71,40 @@ int binary_search(int left, int right, int findN, int *list){
     binary_search(left, right, findN, list);
     
 }
-void swap(int *a, int *b){
-    int temp = *a;
-    *a = *b;
-    *b = temp;
+
+int rand_partition(int list[], int low, int high){
+    int i;
+    srand(time(NULL));
+    i = low + rand() % (high - low);
+    swap(&list[low], &list[i]);
+    return partition(list, low, high);
 }
 
-void selection_sort(int * list, int n){
-    int i, j;
-    int min;
-    
-    for(i = 0; i < n - 1; i++){
-        min = i;
-        for(j = i + 1; j < n; j++){
-            if(list[min] > list[j]){
-                min = j;
-            }
+void quick_sort(int list[], int low, int high){
+    if (high > low){
+        int pivotpoint = rand_partition(list, low, high);
+        quick_sort(list, low, pivotpoint - 1);
+        quick_sort(list, pivotpoint + 1, high);
+    }  
+}
+
+int partition(int list[], int low, int high){
+    int i, j = low;
+    int pivotitem = list[low];
+
+    for (i = low + 1; i <= high; i++){
+        if (list[i] < pivotitem) {
+            j++;
+            swap(&list[i], &list[j]);
         }
-        swap(&list[min], &list[i]);
     }
+    swap(&list[low], &list[j]);
+    return j;
+}
+
+void swap(int* a, int*b){
+    int tmp;
+    tmp = *a;
+    *a = *b;
+    *b = tmp;
 }
