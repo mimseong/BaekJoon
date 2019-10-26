@@ -1,18 +1,11 @@
 #include <iostream>
-#include <string>
-using namespace std;
+
+using i64 = long long;
 
 int main() {
-    string num;
-    int cash = 0, tmp;
-    cin >> num;
+	i64 n;
+    scanf("%lld", &n);
+	printf("%lld", 4 * n);
     
-    for(int i = num.length() - 1; i >= 0; i--){
-        tmp = (num[i] - '0') * 4 + cash;
-        num[i] = (tmp % 10) + '0';
-        cash = tmp / 10;
-    }
-    if(cash != 0)
-        cout << cash;
-    cout << num;
+    return 0;
 }
