@@ -11,20 +11,11 @@ int main() {
     for(int i = 1; i <= n; i++)
         v.push_back(i);
     
-    int count = 1;
-    for(int i = 0; ; i++,count++){
-        if(i == v.size())
-            i = 0;
-            
-        if(count == k){
-            p.push_back(v[i]);
-            v.erase(v.begin() + i);
-            i--;
-            count = 0;
-        }
-        
-        if(v.empty())
-            break;
+    int pos = 0;    //현위치
+    while (!v.empty()){
+        pos = (pos + k - 1) % v.size();
+        p.push_back(v[pos]);
+        v.erase(v.begin() + pos);
     }
     
     printf("<%d", p[0]);

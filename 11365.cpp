@@ -7,7 +7,7 @@ int main() {
     
     while(true){
         getline(cin, str);
-        if(str.compare("END") == 0)
+        if(str == "END")
             break;
         reverse(str.begin(), str.end());
         cout << str << endl;
