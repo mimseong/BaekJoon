@@ -1,45 +1,25 @@
 #include <iostream>
-
+#include <string>
 using namespace std;
 
-int main() {
-    int jstate = 1, istate = 1;
-    int jcount = 0, icount = 0;
-    string str;
-    cin >> str;
-    
-    for(int i = 0; i < str.length(); i++){
-        //JOI
-        if(str[i] == 'J' && jstate == 1){
-            jstate = 2;
-        }
-        else if(jstate == 2){
-            if(str[i] == 'O')
-                jstate = 3;
-            else if(str[i] != 'J')
-                jstate = 1;
-        }
-        else if(jstate == 3){
-            if(str[i] == 'I')
-                jcount++;
-            jstate = 1;
-        }
-    //IOI
-        if(str[i] == 'I' && istate == 1)
-            istate = 2;
-        else if(istate == 2){
-            if(str[i] == 'O')
-                istate = 3;
-            else if(str[i] != 'I')
-                istate = 1;
-        }
-        else if(istate == 3){
-            if(str[i] == 'I'){
-                icount++;
-                istate = 2;
-            }
-            else istate = 1;
-        }
-    }
-    printf("%d\n%d", jcount, icount);
+int main()
+{
+  string s;
+  cin >> s;
+
+  int ioi = 0, joi = 0;
+
+  for (int i = 0; i < s.size() - 2; i++)
+  {
+    string sub = s.substr(i, 3);
+
+    if (sub == "JOI")
+      joi++;
+    if (sub == "IOI")
+      ioi++;
+  }
+  
+  printf("%d\n%d", joi, ioi);
+
+  return 0;
 }

@@ -1,5 +1,3 @@
-//상근날드
-
 #include <iostream>
 #include <algorithm>
 

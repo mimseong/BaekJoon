@@ -1,4 +1,7 @@
 #include <iostream>
+#include <algorithm>
+
+using namespace std;
 
 int main() {
     int a0, a1, a2, a3;
