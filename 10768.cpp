@@ -1,20 +1,19 @@
 #include <iostream>
 
+using namespace std;
+using ii = pair<int, int>;
+
 int main() {
-    int month, day;
-    scanf("%d %d", &month, &day);
-    //printf("%d %d", month, day);
+    ii special = {2, 18};
+    ii date;
+    scanf("%d %d", &date.first, &date.second);
     
-    if(month > 2)
-        printf("After");
-    else if(month < 2)
+    if(date < special)
         printf("Before");
-    else{
-        if(day < 18)
-            printf("Before");
-        else if(day > 18)
-            printf("After");
-        else
-            printf("Special");
-    }
+    else if(date > special)
+        printf("After");
+    else
+        printf("Special");
+        
+    return 0;
 }
