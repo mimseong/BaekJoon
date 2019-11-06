@@ -11,18 +11,10 @@ int main() {
         str = "00" + str;
         
     string result = "";
-    int sum = 0;
     
-    for(int i = 0; i < str.length(); i++){
-        if(i%3 == 0)
-            sum += 4*(str[i] - '0');
-        else if(i%3 == 1)
-            sum += 2*(str[i] - '0');
-        else{
-            sum += (str[i] - '0');
-            result += (sum + '0');
-            sum = 0;
-        }
+    for(int i = 0; i < str.length(); i += 3){
+        int d = 4 * str[i] + 2 * str[i + 1] + str[i+2] - 7 * '0';
+        result += d + '0';
     }
     cout << result;
 }
