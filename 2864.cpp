@@ -17,7 +17,7 @@ int main() {
     string str1, str2;
     cin >> str1 >> str2;
     changeAtoB('6', '5', str1, str2);
-    cout << atoi(str1.c_str()) + atoi(str2.c_str()) << " ";
+    cout << stoi(str1.c_str()) + stoi(str2.c_str()) << " ";
     changeAtoB('5', '6', str1, str2);
-    cout << atoi(str1.c_str()) + atoi(str2.c_str());
+    cout << stoi(str1.c_str()) + stoi(str2.c_str());
 }
