@@ -5,6 +5,7 @@
 #include <functional>
 #include <string>
 #include <queue>
+#include <deque>
 #include <stack>
 #include <set>
 #include <map>
@@ -19,28 +20,29 @@
 using namespace std;
 using i64 = long long int;
 using ii = pair<int, int>;
+using iis = pair<int, string>;
 using ii64 = pair<i64, i64>;
+using iii = tuple<int, int, int>;
 
-bool visited[500005];
 vector<int> adj[500005];
+bool visited[500005];
+int heightSum = 0;
 
-int ans;
-
-void dfs(int curr, int height)
+void dfs(int curr, int h)
 {
     visited[curr] = true;
 
-    bool isLeaf = true;
+    bool leaf = true;
     for (int next : adj[curr])
     {
         if (!visited[next])
         {
-            isLeaf = false;
-            dfs(next, height + 1);
+            leaf = false;
+            dfs(next, h + 1);
         }
     }
-    if (isLeaf)
-        ans += height;
+    if (leaf)
+        heightSum += h;
 }
 
 int     main()
@@ -52,18 +54,17 @@ int     main()
     {
         int u, v;
         scanf("%d %d", &u, &v);
-        adj[u].push_back(v);
         adj[v].push_back(u);
+        adj[u].push_back(v);
     }
 
+    memset(visited, false, sizeof(visited));
     dfs(1, 0);
 
- /*   cout << ans << endl;*/
-
-    if (ans % 2 == 0)
-        cout << "No" << endl;
+    if (heightSum % 2 == 0)
+        printf("No\n");
     else
-        cout << "Yes" << endl;
+        printf("Yes\n");
 
     return 0;
 }
