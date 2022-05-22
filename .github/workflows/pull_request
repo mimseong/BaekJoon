@@ -1,16 +1,14 @@
-name: "Assign Reviewers to PR"
+name: Review Assign
 
-on:  
+on:
   pull_request:
-    types: [opened, ready_for_review, reopened, review_requested, review_request_removed]
-     
+    types: [opened, ready_for_review]
+
 jobs:
-  assign-pr-reviewers:
+  assign:
     runs-on: ubuntu-latest
     steps:
-    - name: "Assign Reviewers to PR"
-      uses: itsOliverBott/assign-pr-reviewers@release
-      with:
-        token: ${{ secrets.TOKEN }}
-        users: "mimseong" # comma-separated (example: "itsOliverBott, SantaClaus, b4tman, sp0derman")
-        ignore-drafts: false # defaults to false if not provide
+      - uses: hkusu/review-assign-action@v1
+        with:
+          assignees: ${{ github.actor }} # assign pull request author
+          reviewers: mimseong
