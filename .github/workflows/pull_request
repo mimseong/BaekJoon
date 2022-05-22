@@ -1,12 +1,7 @@
-name: pull-request
-on:
-  pull_request:
-    types: [opened, reopened]
-jobs:
-  assign:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: delivery-much/actions-assigner@v1
-        with:
-          token: ${{ secrets.TOKEN }}
-          reviewers: mimseong
+- name: Request review
+  uses: murs313/request-review@v1.0
+  with:
+    # Github token.
+    token: ${{ secrets.GITHUB_TOKEN }}
+    reviewers: 'mimseong'
+    pull-request-number: 1
