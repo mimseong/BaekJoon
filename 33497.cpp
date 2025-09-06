@@ -9,8 +9,8 @@ int main()
   int n, m;
   scanf("%d %d", &n, &m);
 
-  vector<int> a(n);
-  vector<int> b(n);
+  vector<int> a(m);
+  vector<int> b(m);
   vector<int> vacant(m);
 
   for (int i = 0; i < m; i++)
