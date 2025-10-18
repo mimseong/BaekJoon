@@ -8,7 +8,7 @@ def main():
         dot_pos = s.find(".")
         extension = s[dot_pos + 1 :]
 
-        if dict.get(extension) == None:
+        if dict.get(extension) is None:
             dict[extension] = 1
         else:
             dict[extension] += 1
